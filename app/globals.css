@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #020617;
+  background-image:
+    radial-gradient(60rem 60rem at 110% -10%, rgba(16, 185, 129, 0.09), transparent 60%),
+    radial-gradient(50rem 50rem at -20% 10%, rgba(244, 63, 94, 0.07), transparent 55%),
+    radial-gradient(46rem 46rem at 50% 120%, rgba(56, 189, 248, 0.05), transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.35);
+  color: #f8fafc;
+}
+
+@layer components {
+  .pc-card {
+    @apply rounded-2xl border border-slate-800/80 bg-slate-900/60 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.9)] backdrop-blur-sm;
+  }
+
+  .pc-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+
+  .pc-input {
+    @apply w-full rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2.5 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-emerald-500/70 focus:ring-2 focus:ring-emerald-500/20;
+  }
+
+  .pc-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-3 text-sm font-bold text-slate-950 transition hover:from-emerald-400 hover:to-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .pc-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-slate-500 hover:text-slate-100;
+  }
+}
+
+.pc-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pc-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pc-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+}
+
+.pc-scroll::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+#pharmcheck-reader {
+  position: relative;
+}
+
+#pharmcheck-reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+#pharmcheck-reader__dashboard {
+  display: none !important;
+}
+
+@keyframes pc-scan-line {
+  0% {
+    top: 10%;
+  }
+  100% {
+    top: 86%;
+  }
+}
+
+@keyframes pc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pc-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pc-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pc-pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes pc-dash {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+.animate-pc-scan-line {
+  animation: pc-scan-line 2.6s ease-in-out infinite alternate;
+}
+
+.animate-pc-fade-up {
+  animation: pc-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pc-pop {
+  animation: pc-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pc-draw {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: pc-draw 0.7s 0.25s ease-out forwards;
+}
+
+.animate-pc-pulse-ring {
+  animation: pc-pulse-ring 1.8s ease-out infinite;
+}
+
+.animate-pc-dash {
+  animation: pc-dash 1.4s linear infinite;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+
+  .pc-label-card {
+    background: #ffffff !important;
+    border-color: #94a3b8 !important;
+    box-shadow: none !important;
+  }
+
+  .pc-label-card * {
+    color: #0f172a !important;
+  }
+
+  .pc-label-card img {
+    background: #ffffff !important;
+  }
+}

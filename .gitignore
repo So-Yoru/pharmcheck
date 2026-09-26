@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# database
+pharmcheck.db
+pharmcheck.db-shm
+pharmcheck.db-wal
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+next-env.d.ts
+tsconfig.tsbuildinfo
